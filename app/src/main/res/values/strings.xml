@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">MarvelSuperHeroes</string>
+
+    <string name="loading_animation_path">https://media.giphy.com/media/7isbcNAx367qU/200.gif</string>
+    <string name="search_superhero">Search super hero</string>
+    <string name="no_superheroes_text">There are no super heroes :(</string>
+
+    <string name="network_error_not_found">Not found error</string>
+    <string name="network_error_unknown">Unknown error. Status code: %s</string>
+    <string name="network_error_generic">Network Error</string>
+    <string name="appears_in">Appears in:</string>
+
+    <string name="exit_alert_toast">Press back again to exit</string>
+
 </resources>

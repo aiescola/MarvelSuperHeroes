@@ -1,11 +1,33 @@
 <resources>
 
-    <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
+    <!-- Splash theme. -->
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="background">@color/backgroundColor</item>
+    </style>
+
+    <style name="SearchBoxEditText" parent="Widget.AppCompat.EditText">
+        <item name="android:background">@drawable/bg_search_edit_text</item>
+        <item name="android:elevation">6dp</item>
+        <item name="android:inputType">text</item>
+        <item name="android:imeOptions">actionSearch</item>
+    </style>
+
+    <style name="DetailTitleStyle">
+        <item name="android:textColor">@color/textLight</item>
+        <item name="android:textSize">24sp</item>
+        <item name="elevation">6dp</item>
     </style>
 
 </resources>

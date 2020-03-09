@@ -1,12 +1,11 @@
 apply plugin: 'com.android.application'
-
 apply plugin: 'kotlin-android'
-
 apply plugin: 'kotlin-android-extensions'
+apply plugin: "kotlin-kapt"
 
 android {
     compileSdkVersion 29
-    buildToolsVersion "29.0.2"
+    buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.aescolar.marvelsuperheroes"
         minSdkVersion 22
@@ -14,6 +13,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "MARVEL_PUBLIC_KEY", MARVEL_PUBLIC_KEY
+        buildConfigField "String", "MARVEL_PRIVATE_KEY", MARVEL_PRIVATE_KEY
     }
     buildTypes {
         release {
@@ -36,13 +38,36 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.core:core-ktx:1.2.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+    implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha01'
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.0"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.0"
+    // Coroutines
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutinesVersion"
 
-    implementation "io.arrow-kt:arrow-core-data:0.10.4"
+    // Dependency injection
+    implementation "org.koin:koin-android-viewmodel:$koinVersion"
 
+    // Image downloading
+    implementation "com.github.bumptech.glide:glide:$glideVersion"
+
+    // RecyclerView pagination
+    implementation 'com.github.markomilos:paginate:0.5.1'
+
+    // android lifecycle
+    implementation "androidx.lifecycle:lifecycle-extensions:$archLifecycleVersion"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$archLifecycleVersion"
+
+    // Unit testing
     testImplementation 'junit:junit:4.12'
+    testImplementation "io.mockk:mockk:1.9.3"
+
+    // UI Testing
+    androidTestImplementation 'androidx.test:runner:1.2.0'
+    androidTestImplementation "io.mockk:mockk-android:1.9.3"
+    androidTestImplementation "org.koin:koin-test:$koinVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-core:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:$espressoVersion"
+    androidTestImplementation "androidx.test.espresso:espresso-contrib:$espressoVersion"
+    androidTestImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.3.2"
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 }

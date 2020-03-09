@@ -1,53 +1,27 @@
-apply plugin: 'com.android.library'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-android-extensions'
-
-android {
-    compileSdkVersion 29
-    buildToolsVersion "29.0.2"
-
-
-    defaultConfig {
-        minSdkVersion 22
-        targetSdkVersion 29
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles 'consumer-rules.pro'
-    }
-
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
-        }
-    }
-
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
-    }
-
-}
+apply plugin: 'java-library'
+apply plugin: 'kotlin'
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
 
-    implementation "com.squareup.okhttp3:logging-interceptor:3.6.0"
-    implementation "com.squareup.retrofit2:retrofit:2.7.1"
-    implementation 'com.squareup.retrofit2:converter-moshi:2.7.1'
-    implementation 'com.squareup.retrofit2:converter-gson:2.7.1'
+    // Add functional programming data types like Either or Option which are more polished
+    // than Kotlin's Result IMHO
+    api "io.arrow-kt:arrow-core-data:$arrowVersion"
 
-    implementation "io.arrow-kt:arrow-core-data:0.10.4"
+    // Networking
+    api "com.squareup.retrofit2:retrofit:$retrofitVersion"
+    api "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
 
+    implementation "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+
+    // Unit testing
+    testImplementation "com.squareup.okhttp3:mockwebserver:$okHttpVersion"
+    testImplementation "io.mockk:mockk:1.9.3"
     testImplementation 'junit:junit:4.12'
     testImplementation 'commons-io:commons-io:2.6'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-   // androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
-    testImplementation "io.mockk:mockk:1.9.3"
-    testImplementation 'com.squareup.okhttp3:mockwebserver:4.3.1'
 }
 
+sourceCompatibility = "8"
+targetCompatibility = "8"
